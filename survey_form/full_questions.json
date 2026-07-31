@@ -1,0 +1,553 @@
+[
+  {
+    "id": 1028889228,
+    "title": "Gender",
+    "type": 2,
+    "entry_id": "entry.236224908",
+    "choices": [
+      {
+        "text": "Female",
+        "is_other": false
+      },
+      {
+        "text": "Male",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 424186504,
+    "title": "What is your age range?",
+    "type": 2,
+    "entry_id": "entry.921532506",
+    "choices": [
+      {
+        "text": "Under 18",
+        "is_other": false
+      },
+      {
+        "text": "18–24",
+        "is_other": false
+      },
+      {
+        "text": "25–29",
+        "is_other": false
+      },
+      {
+        "text": "30–34",
+        "is_other": false
+      },
+      {
+        "text": "35–44",
+        "is_other": false
+      },
+      {
+        "text": "45+",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 1927551267,
+    "title": "What best describes your occupation?",
+    "type": 2,
+    "entry_id": "entry.1801662950",
+    "choices": [
+      {
+        "text": "Student",
+        "is_other": false
+      },
+      {
+        "text": "Working professional",
+        "is_other": false
+      },
+      {
+        "text": "Entrepreneur / Business owner",
+        "is_other": false
+      },
+      {
+        "text": "Freelancer / Self-employed",
+        "is_other": false
+      },
+      {
+        "text": "Homemaker",
+        "is_other": false
+      },
+      {
+        "text": "Currently not working",
+        "is_other": false
+      },
+      {
+        "text": "Other",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 628762331,
+    "title": "Which area of Bangalore do you live in?",
+    "type": 2,
+    "entry_id": "entry.1701656037",
+    "choices": [
+      {
+        "text": "Koramangala",
+        "is_other": false
+      },
+      {
+        "text": "HSR Layout",
+        "is_other": false
+      },
+      {
+        "text": "Indiranagar",
+        "is_other": false
+      },
+      {
+        "text": "Whitefield",
+        "is_other": false
+      },
+      {
+        "text": "Sarjapur",
+        "is_other": false
+      },
+      {
+        "text": "Bellandur",
+        "is_other": false
+      },
+      {
+        "text": "Marathahalli",
+        "is_other": false
+      },
+      {
+        "text": "JP Nagar",
+        "is_other": false
+      },
+      {
+        "text": "Jayanagar",
+        "is_other": false
+      },
+      {
+        "text": "Richmond Town / CBD",
+        "is_other": false
+      },
+      {
+        "text": "Hebbal",
+        "is_other": false
+      },
+      {
+        "text": "Yelahanka",
+        "is_other": false
+      },
+      {
+        "text": "Electronic City",
+        "is_other": false
+      },
+      {
+        "text": "Other",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 74301221,
+    "title": "Approximately how much do you spend on fashion/clothing per month?",
+    "type": 2,
+    "entry_id": "entry.317039661",
+    "choices": [
+      {
+        "text": "Less than ₹2,000",
+        "is_other": false
+      },
+      {
+        "text": "₹2,000–₹5,000",
+        "is_other": false
+      },
+      {
+        "text": "₹5,000–₹10,000",
+        "is_other": false
+      },
+      {
+        "text": "₹10,000–₹25,000",
+        "is_other": false
+      },
+      {
+        "text": "₹25,000–₹50,000",
+        "is_other": false
+      },
+      {
+        "text": "More than ₹50,000",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 1400436152,
+    "title": "How often do you buy clothes for yourself?",
+    "type": 2,
+    "entry_id": "entry.641614989",
+    "choices": [
+      {
+        "text": "More than once a month",
+        "is_other": false
+      },
+      {
+        "text": "Once a month",
+        "is_other": false
+      },
+      {
+        "text": "Every 2–3 months",
+        "is_other": false
+      },
+      {
+        "text": "Every 4–6 months",
+        "is_other": false
+      },
+      {
+        "text": "Less often",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 158241637,
+    "title": "Where do you usually shop for clothes?",
+    "type": 4,
+    "entry_id": "entry.2130890888",
+    "choices": [
+      {
+        "text": "Zara",
+        "is_other": false
+      },
+      {
+        "text": "H&M",
+        "is_other": false
+      },
+      {
+        "text": "Mango",
+        "is_other": false
+      },
+      {
+        "text": "Uniqlo",
+        "is_other": false
+      },
+      {
+        "text": "Farfetch",
+        "is_other": false
+      },
+      {
+        "text": "Myntra",
+        "is_other": false
+      },
+      {
+        "text": "Ajio",
+        "is_other": false
+      },
+      {
+        "text": "Luxury / designer stores",
+        "is_other": false
+      },
+      {
+        "text": "Instagram / independent brands",
+        "is_other": false
+      },
+      {
+        "text": "Thrift / preowned platforms",
+        "is_other": false
+      },
+      {
+        "text": "Other",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 1837186309,
+    "title": "Have you purchased a premium or luxury fashion item in the last 12 months?",
+    "type": 2,
+    "entry_id": "entry.1852072366",
+    "choices": [
+      {
+        "text": "Yes",
+        "is_other": false
+      },
+      {
+        "text": "No",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 2092154241,
+    "title": "What do you usually do with clothes you no longer wear?",
+    "type": 4,
+    "entry_id": "entry.1330194199",
+    "choices": [
+      {
+        "text": "Keep them in my wardrobe",
+        "is_other": false
+      },
+      {
+        "text": "Give them to family / friends",
+        "is_other": false
+      },
+      {
+        "text": "Donate them",
+        "is_other": false
+      },
+      {
+        "text": "Sell them",
+        "is_other": false
+      },
+      {
+        "text": "Throw them away",
+        "is_other": false
+      },
+      {
+        "text": "Other",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 1721169654,
+    "title": "Have you ever sold your preowned clothes?",
+    "type": 2,
+    "entry_id": "entry.1656920273",
+    "choices": [
+      {
+        "text": "Yes, regularly",
+        "is_other": false
+      },
+      {
+        "text": "Yes, once or twice",
+        "is_other": false
+      },
+      {
+        "text": "I tried but couldn't sell them",
+        "is_other": false
+      },
+      {
+        "text": "No, but I'd like to",
+        "is_other": false
+      },
+      {
+        "text": "No, and I'm not interested",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 535796610,
+    "title": "What would be the biggest reason for you to sell clothes you no longer wear?",
+    "type": 4,
+    "entry_id": "entry.1726210043",
+    "choices": [
+      {
+        "text": "Make some money back",
+        "is_other": false
+      },
+      {
+        "text": "Free up wardrobe space",
+        "is_other": false
+      },
+      {
+        "text": "Sell clothes I've barely worn",
+        "is_other": false
+      },
+      {
+        "text": "Recover value from expensive purchases",
+        "is_other": false
+      },
+      {
+        "text": "Reduce waste",
+        "is_other": false
+      },
+      {
+        "text": "Moving / relocating",
+        "is_other": false
+      },
+      {
+        "text": "Other",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 848124202,
+    "title": "What would stop you from selling your clothes online?",
+    "type": 4,
+    "entry_id": "entry.819080465",
+    "choices": [
+      {
+        "text": "Taking photos and creating listings",
+        "is_other": false
+      },
+      {
+        "text": "Deciding the right price",
+        "is_other": false
+      },
+      {
+        "text": "Finding serious buyers",
+        "is_other": false
+      },
+      {
+        "text": "Negotiating with buyers",
+        "is_other": false
+      },
+      {
+        "text": "Packaging / shipping",
+        "is_other": false
+      },
+      {
+        "text": "Arranging pickup",
+        "is_other": false
+      },
+      {
+        "text": "Concern about scams / fraud",
+        "is_other": false
+      },
+      {
+        "text": "Payment concerns",
+        "is_other": false
+      },
+      {
+        "text": "Privacy / safety",
+        "is_other": false
+      },
+      {
+        "text": "Too much effort for too little money",
+        "is_other": false
+      },
+      {
+        "text": "Other",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 887594446,
+    "title": "When buying preowned clothing, what would make you comfortable purchasing it?",
+    "type": 4,
+    "entry_id": "entry.544833170",
+    "choices": [
+      {
+        "text": "Verified / authenticated products",
+        "is_other": false
+      },
+      {
+        "text": "Detailed photos",
+        "is_other": false
+      },
+      {
+        "text": "Accurate condition grading",
+        "is_other": false
+      },
+      {
+        "text": "Proof of purchase",
+        "is_other": false
+      },
+      {
+        "text": "Seller ratings / reviews",
+        "is_other": false
+      },
+      {
+        "text": "Easy returns",
+        "is_other": false
+      },
+      {
+        "text": "Secure payment",
+        "is_other": false
+      },
+      {
+        "text": "Platform-managed delivery",
+        "is_other": false
+      },
+      {
+        "text": "Seller verification",
+        "is_other": false
+      },
+      {
+        "text": "Other",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 1920295109,
+    "title": "What matters most when buying preowned clothing?",
+    "type": 4,
+    "entry_id": "entry.1915593258",
+    "choices": [
+      {
+        "text": "Price",
+        "is_other": false
+      },
+      {
+        "text": "Brand",
+        "is_other": false
+      },
+      {
+        "text": "Condition",
+        "is_other": false
+      },
+      {
+        "text": "Authenticity",
+        "is_other": false
+      },
+      {
+        "text": "Style / uniqueness",
+        "is_other": false
+      },
+      {
+        "text": "Sustainability",
+        "is_other": false
+      },
+      {
+        "text": "Rarity / exclusivity",
+        "is_other": false
+      },
+      {
+        "text": "Size / fit",
+        "is_other": false
+      },
+      {
+        "text": "Convenience",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 1541604652,
+    "title": "Imagine a platform where women in Bangalore can easily sell and buy preowned fashion. Which model would you prefer?",
+    "type": 2,
+    "entry_id": "entry.21080423",
+    "choices": [
+      {
+        "text": "I list it myself and handle the sale",
+        "is_other": false
+      },
+      {
+        "text": "The platform helps me list it and handles buyers",
+        "is_other": false
+      },
+      {
+        "text": "The platform picks it up, lists it, and handles the entire sale",
+        "is_other": false
+      },
+      {
+        "text": "I don't want to sell, but I would buy",
+        "is_other": false
+      },
+      {
+        "text": "I wouldn't use such a platform",
+        "is_other": false
+      }
+    ]
+  },
+  {
+    "id": 852352786,
+    "title": "What would make you trust a preowned fashion marketplace enough to use it?",
+    "type": 1,
+    "entry_id": "entry.1398588771",
+    "choices": []
+  }
+]

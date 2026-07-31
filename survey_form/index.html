@@ -1,0 +1,3180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Story — Preworn Fashion Survey</title>
+    <meta name="description" content="We’re exploring how women in Bangalore buy, wear, and resell fashion. Share your thoughts to shape the future of preworn luxury and sustainable fashion.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome / Lucide Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+/* ==========================================================================
+   Second Story — Preworn Fashion Survey Design System
+   Aesthetic: Premium Dark Luxury Fashion Editorial
+   ========================================================================== */
+
+:root {
+    /* Color Palette */
+    --bg-main: #0B0E14;
+    --bg-card: rgba(22, 27, 34, 0.75);
+    --bg-card-hover: rgba(30, 37, 48, 0.85);
+    --bg-card-selected: rgba(229, 193, 88, 0.08);
+    
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(229, 193, 88, 0.35);
+    --border-active: #E5C158;
+    
+    --text-primary: #F0F6FC;
+    --text-secondary: #8B949E;
+    --text-muted: #6E7681;
+    --text-accent: #E5C158;
+    
+    --accent-gold: #E5C158;
+    --accent-gold-glow: rgba(229, 193, 88, 0.25);
+    --accent-rose: #E29578;
+    --accent-emerald: #2A9D8F;
+    --danger-color: #FF6B6B;
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Radius & Elevation */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 25px rgba(229, 193, 88, 0.15);
+    
+    /* Transitions */
+    --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Ambient Background Orbs */
+.ambient-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.18;
+    animation: floatOrb 18s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+    top: -10%;
+    left: 15%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #E5C158, #B8860B);
+}
+
+.orb-2 {
+    bottom: -15%;
+    right: 10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #E29578, #8B0000);
+}
+
+.orb-3 {
+    top: 40%;
+    left: -10%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, #2A9D8F, #004D40);
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, 30px) scale(1.1); }
+    100% { transform: translate(-30px, -20px) scale(0.95); }
+}
+
+/* App Container */
+.app-container {
+    width: 100%;
+    max-width: 820px;
+    z-index: 1;
+    position: relative;
+}
+
+/* Brand Header */
+.brand-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+}
+
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(229, 193, 88, 0.1);
+    border: 1px solid rgba(229, 193, 88, 0.25);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-gold);
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.brand-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #FFFFFF 30%, var(--accent-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.25rem;
+}
+
+.brand-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.brand-description {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.brand-description strong {
+    color: var(--text-primary);
+}
+
+/* Progress Tracker */
+.progress-wrapper {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.progress-step-text {
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+}
+
+.progress-percentage {
+    color: var(--accent-gold);
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(90deg, var(--accent-rose), var(--accent-gold));
+    border-radius: 100px;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px var(--accent-gold-glow);
+}
+
+.step-indicators {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.step-dot {
+    flex: 1;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 4px;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: var(--transition);
+    border-bottom: 2px solid transparent;
+}
+
+.step-dot:hover {
+    opacity: 0.75;
+}
+
+.step-dot.active {
+    opacity: 1;
+    border-bottom-color: var(--accent-gold);
+}
+
+.step-dot.completed {
+    opacity: 0.85;
+}
+
+.dot-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-dot.active .dot-num {
+    background: var(--accent-gold);
+    color: #000;
+}
+
+.step-dot.completed .dot-num {
+    background: var(--accent-emerald);
+    color: #fff;
+}
+
+.dot-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+    .dot-label {
+        display: none;
+    }
+}
+
+/* Form Container Card */
+.survey-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .survey-card {
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+/* Form Sections */
+.form-section {
+    display: none;
+    animation: fadeInSection 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.form-section.active {
+    display: block;
+}
+
+@keyframes fadeInSection {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-number {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.section-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+/* Question Group */
+.question-group {
+    margin-bottom: 2.25rem;
+}
+
+.question-label {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.9rem;
+    line-height: 1.4;
+}
+
+.sub-label {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-left: 4px;
+}
+
+.required-star {
+    color: var(--accent-rose);
+    margin-left: 2px;
+}
+
+/* Options Grids */
+.options-grid {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.grid-1 { grid-template-columns: 1fr; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 680px) {
+    .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Option Cards (Radio & Checkbox) */
+.option-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+}
+
+/* Rating Matrix (Question 7) */
+.rating-matrix-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.rating-matrix-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.matrix-brand-col {
+    flex: 1;
+}
+
+.matrix-scale-cols {
+    display: flex;
+    gap: 12px;
+    width: 220px;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.matrix-scale-cols span {
+    width: 34px;
+    line-height: 1.1;
+}
+
+.matrix-scale-cols small {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.rating-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: var(--transition);
+}
+
+.rating-row:last-child {
+    border-bottom: none;
+}
+
+.rating-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.brand-name {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.rating-options {
+    display: flex;
+    gap: 12px;
+    width: 220px;
+    justify-content: space-between;
+}
+
+.rate-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    position: relative;
+    transition: var(--transition);
+}
+
+.rate-btn input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.rate-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+    transform: scale(1.08);
+}
+
+.rate-btn.selected,
+.rate-btn:has(input[type="radio"]:checked) {
+    background: linear-gradient(135deg, var(--accent-gold), #C9A033);
+    color: #000;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 12px var(--accent-gold-glow);
+}
+
+.rating-row-other {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.brand-other-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.inline-other-text {
+    flex: 1;
+    padding: 8px 12px;
+}
+
+@media (max-width: 600px) {
+    .matrix-scale-cols {
+        display: none;
+    }
+
+    .rating-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .rating-options {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .rate-btn {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+.full-width-card {
+    grid-column: 1 / -1;
+}
+
+.option-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+}
+
+.option-card input[type="radio"],
+.option-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Custom Radio Indicator */
+.custom-radio {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--text-muted);
+    position: relative;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.custom-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--accent-gold);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.option-card input[type="radio"]:checked ~ .custom-radio {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px var(--accent-gold-glow);
+}
+
+.option-card input[type="radio"]:checked ~ .custom-radio::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Custom Checkbox Indicator */
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--text-muted);
+    position: relative;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.custom-checkbox::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 11px;
+    color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.option-card input[type="checkbox"]:checked ~ .custom-checkbox {
+    border-color: var(--accent-gold);
+    background-color: var(--accent-gold);
+    box-shadow: 0 0 10px var(--accent-gold-glow);
+}
+
+.option-card input[type="checkbox"]:checked ~ .custom-checkbox::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Card Active / Checked State */
+.option-card.selected {
+    background: var(--bg-card-selected);
+    border-color: var(--border-active);
+    box-shadow: var(--shadow-glow);
+}
+
+.option-text {
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Feature Model Cards (Section 4) */
+.feature-model-card {
+    padding: 18px 20px;
+    align-items: flex-start;
+}
+
+.card-content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.option-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.option-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.highlight-model {
+    border-color: rgba(229, 193, 88, 0.3);
+    background: rgba(229, 193, 88, 0.03);
+}
+
+/* Custom Text Inputs for "Other" */
+.other-input-container {
+    margin-top: 0.75rem;
+    animation: fadeInOther 0.25s ease;
+}
+
+.other-input-container.hidden {
+    display: none;
+}
+
+@keyframes fadeInOther {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.other-text-input,
+.custom-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.other-text-input:focus,
+.custom-textarea:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 12px var(--accent-gold-glow);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.textarea-wrapper {
+    margin-top: 0.5rem;
+}
+
+.custom-textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.6;
+}
+
+/* Error Banner */
+.error-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255, 107, 107, 0.12);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: var(--radius-sm);
+    color: var(--danger-color);
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    animation: shakeError 0.3s ease;
+}
+
+.error-banner.hidden {
+    display: none;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-4px); }
+    40%, 80% { transform: translateX(4px); }
+}
+
+/* Nav Controls */
+.nav-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    outline: none;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-gold), #C9A033);
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 4px 15px var(--accent-gold-glow);
+    margin-left: auto;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 193, 88, 0.35);
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--accent-emerald), #1F7A70);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(42, 157, 143, 0.3);
+    margin-left: auto;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 157, 143, 0.45);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-gold);
+}
+
+.btn.hidden {
+    display: none;
+}
+
+/* Spinner */
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.spinner.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Confirmation / Success Card */
+.confirmation-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-active);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    animation: fadeInSuccess 0.5s ease forwards;
+}
+
+.confirmation-card.hidden {
+    display: none;
+}
+
+@keyframes fadeInSuccess {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.success-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.success-icon-bg {
+    width: 72px;
+    height: 72px;
+    background: rgba(42, 157, 143, 0.15);
+    border: 2px solid var(--accent-emerald);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--accent-emerald);
+    box-shadow: 0 0 25px rgba(42, 157, 143, 0.3);
+}
+
+.thank-you-title {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.thank-you-message {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+.summary-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: left;
+    margin-bottom: 2.5rem;
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+.summary-box h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-q {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.summary-a {
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* App Footer */
+.app-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Comprehensive Mobile & Tablet Responsive Media Queries
+   ========================================================================== */
+
+/* Medium Tablets & Mobile Devices (<= 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .brand-header {
+        margin-bottom: 1.75rem;
+    }
+
+    .brand-title {
+        font-size: 2.3rem;
+    }
+
+    .brand-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .brand-description {
+        font-size: 0.88rem;
+    }
+
+    .progress-wrapper {
+        padding: 1rem 1.15rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .survey-card {
+        padding: 1.75rem 1.25rem;
+        border-radius: var(--radius-md);
+    }
+
+    .section-heading {
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .section-number {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.35rem;
+    }
+}
+
+/* Question 7 Rating Matrix Touch Optimization (<= 640px) */
+@media (max-width: 640px) {
+    .rating-matrix-card {
+        background: transparent;
+        border: none;
+    }
+
+    .rating-matrix-header {
+        display: none;
+    }
+
+    .rating-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px 12px;
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        margin-bottom: 10px;
+    }
+
+    .brand-name {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--accent-gold);
+    }
+
+    .rating-options {
+        width: 100%;
+        gap: 8px;
+        justify-content: space-between;
+    }
+
+    .rate-btn {
+        flex: 1;
+        width: auto;
+        height: 40px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 700;
+    }
+
+    .brand-other-input-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .inline-other-text {
+        width: 100%;
+    }
+}
+
+/* Mobile Screens & Narrow Viewports (<= 520px) */
+@media (max-width: 520px) {
+    body {
+        padding: 0.75rem 0.4rem;
+    }
+
+    .brand-badge {
+        padding: 5px 12px;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    .brand-title {
+        font-size: 1.85rem;
+    }
+
+    .brand-subtitle {
+        font-size: 1rem;
+    }
+
+    .brand-description {
+        font-size: 0.84rem;
+        line-height: 1.5;
+    }
+
+    .progress-wrapper {
+        padding: 0.9rem 0.9rem;
+    }
+
+    .progress-header {
+        font-size: 0.78rem;
+    }
+
+    .step-dot {
+        padding: 4px 2px;
+    }
+
+    .dot-num {
+        width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
+    }
+
+    .dot-label {
+        display: none;
+    }
+
+    .survey-card {
+        padding: 1.25rem 0.85rem;
+        border-radius: 14px;
+    }
+
+    .question-label {
+        font-size: 0.98rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .option-card {
+        padding: 12px 14px;
+        border-radius: 8px;
+    }
+
+    .option-text {
+        font-size: 0.88rem;
+    }
+
+    .feature-model-card {
+        padding: 14px 14px;
+    }
+
+    .option-title {
+        font-size: 0.92rem;
+    }
+
+    .option-desc {
+        font-size: 0.8rem;
+    }
+
+    .nav-controls {
+        flex-direction: column-reverse;
+        gap: 0.75rem;
+        margin-top: 1.75rem;
+        padding-top: 1.25rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 0.92rem;
+        justify-content: center;
+    }
+
+    .btn-primary,
+    .btn-submit {
+        margin-left: 0;
+    }
+
+    .confirmation-card {
+        padding: 2rem 1rem;
+        border-radius: 14px;
+    }
+
+    .thank-you-title {
+        font-size: 1.8rem;
+    }
+
+    .thank-you-message {
+        font-size: 0.92rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .summary-box {
+        padding: 1rem;
+        max-height: 280px;
+    }
+
+    .confirmation-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .confirmation-actions .btn {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+<body>
+
+    <!-- Ambient Background Lighting -->
+    <div class="ambient-bg">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        
+        <!-- Header / Brand Banner -->
+        <header class="brand-header">
+            <div class="brand-badge">
+                <span class="badge-dot"></span> BANGALORE FASHION INSIGHTS
+            </div>
+            <h1 class="brand-title">Second Story</h1>
+            <p class="brand-subtitle">Preworn Fashion Survey</p>
+            <p class="brand-description">
+                We’re exploring how women in Bangalore buy, wear, and resell fashion. 
+                This survey takes approximately <strong>3–4 minutes</strong>. Your insights help create a more seamless and trustworthy preowned clothing experience.
+            </p>
+        </header>
+
+        <!-- Progress Bar Container -->
+        <div class="progress-wrapper" id="progressWrapper">
+            <div class="progress-header">
+                <span class="progress-step-text" id="stepCounterText">Section 1 of 4</span>
+                <span class="progress-percentage" id="progressPercentage">25% Completed</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <div class="step-indicators">
+                <button type="button" class="step-dot active" data-step="1" title="Demographics">
+                    <span class="dot-num">1</span>
+                    <span class="dot-label">About You</span>
+                </button>
+                <button type="button" class="step-dot" data-step="2" title="Shopping Habits">
+                    <span class="dot-num">2</span>
+                    <span class="dot-label">Shopping</span>
+                </button>
+                <button type="button" class="step-dot" data-step="3" title="Resale Preferences">
+                    <span class="dot-num">3</span>
+                    <span class="dot-label">Resale</span>
+                </button>
+                <button type="button" class="step-dot" data-step="4" title="Future Platform">
+                    <span class="dot-num">4</span>
+                    <span class="dot-label">Vision</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Hidden Iframe to process Google Form submission silently -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { handleFormSubmitted(); }"></iframe>
+
+        <!-- Survey Form -->
+        <form id="surveyForm" action="https://docs.google.com/forms/d/1R_uiwJd2oDfRhs_6IN0RoT68OHp08mwX8E0S3AHoutE/formResponse" method="POST" target="hidden_iframe" class="survey-card">
+
+            <!-- SECTION 1: ABOUT YOU -->
+            <div class="form-section active" data-section="1">
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+                    <div>
+                        <h2 class="section-title">About You</h2>
+                        <p class="section-desc">Help us understand your demographic and lifestyle context in Bangalore.</p>
+                    </div>
+                </div>
+
+                <!-- Question 1: Gender -->
+                <div class="question-group" id="group-gender">
+                    <label class="question-label">
+                        Gender <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-2">
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.236224908" value="Female">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Female</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.236224908" value="Male">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Male</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2: Age Range -->
+                <div class="question-group" id="group-age">
+                    <label class="question-label">
+                        What is your age range? <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-3">
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.921532506" value="Under 18">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Under 18</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.921532506" value="18–24">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">18–24</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.921532506" value="25–29">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">25–29</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.921532506" value="30–34">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">30–34</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.921532506" value="35–44">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">35–44</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.921532506" value="45+">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">45+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3: Occupation -->
+                <div class="question-group" id="group-occupation">
+                    <label class="question-label">
+                        What best describes your occupation? <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-2">
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1801662950" value="Student">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Student</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1801662950" value="Working professional">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Working professional</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1801662950" value="Entrepreneur / Business owner">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Entrepreneur / Business owner</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1801662950" value="Freelancer / Self-employed">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Freelancer / Self-employed</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1801662950" value="Homemaker">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Homemaker</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1801662950" value="Currently not working">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Currently not working</span>
+                        </label>
+                        <label class="option-card radio-card full-width-card" data-has-other="true">
+                            <input type="radio" name="entry.1801662950" value="__other_option__" data-other-target="other-occ">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Other</span>
+                        </label>
+                    </div>
+                    <div class="other-input-container hidden" id="other-occ">
+                        <input type="text" name="entry.1801662950.other_option_response" class="other-text-input" placeholder="Please specify your occupation...">
+                    </div>
+                </div>
+
+                <!-- Question 4: Bangalore Area -->
+                <div class="question-group" id="group-area">
+                    <label class="question-label">
+                        Which area of Bangalore do you live in? <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-3">
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Koramangala">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Koramangala</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="HSR Layout">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">HSR Layout</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Indiranagar">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Indiranagar</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Whitefield">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Whitefield</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Sarjapur">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Sarjapur</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Bellandur">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Bellandur</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Marathahalli">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Marathahalli</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="JP Nagar">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">JP Nagar</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Jayanagar">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Jayanagar</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Richmond Town / CBD">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Richmond Town / CBD</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Hebbal">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Hebbal</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Yelahanka">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Yelahanka</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1701656037" value="Electronic City">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Electronic City</span>
+                        </label>
+                        <label class="option-card radio-card" data-has-other="true">
+                            <input type="radio" name="entry.1701656037" value="__other_option__" data-other-target="other-area">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Other</span>
+                        </label>
+                    </div>
+                    <div class="other-input-container hidden" id="other-area">
+                        <input type="text" name="entry.1701656037.other_option_response" class="other-text-input" placeholder="Please specify your neighborhood...">
+                    </div>
+                </div>
+
+                <!-- Question 5: Monthly Spend -->
+                <div class="question-group" id="group-spend">
+                    <label class="question-label">
+                        Approximately how much do you spend on fashion/clothing per month? <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-2">
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.317039661" value="Less than ₹2,000">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Less than ₹2,000</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.317039661" value="₹2,000–₹5,000">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">₹2,000–₹5,000</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.317039661" value="₹5,000–₹10,000">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">₹5,000–₹10,000</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.317039661" value="₹10,000–₹25,000">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">₹10,000–₹25,000</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.317039661" value="₹25,000–₹50,000">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">₹25,000–₹50,000</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.317039661" value="More than ₹50,000">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">More than ₹50,000</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6: Shopping Frequency -->
+                <div class="question-group" id="group-freq">
+                    <label class="question-label">
+                        How often do you buy clothes for yourself? <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-2">
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.641614989" value="More than once a month">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">More than once a month</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.641614989" value="Once a month">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Once a month</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.641614989" value="Every 2–3 months">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Every 2–3 months</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.641614989" value="Every 4–6 months">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Every 4–6 months</span>
+                        </label>
+                        <label class="option-card radio-card full-width-card">
+                            <input type="radio" name="entry.641614989" value="Less often">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Less often</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SECTION 2: SHOPPING & WARDROBE HABITS -->
+            <div class="form-section" data-section="2">
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+                    <div>
+                        <h2 class="section-title">Shopping & Wardrobe Habits</h2>
+                        <p class="section-desc">Tell us where you shop and how you handle garments you no longer wear.</p>
+                    </div>
+                </div>
+
+                <!-- Question 7: Where do you usually shop? (1-5 Rating Scale) -->
+                <div class="question-group" id="group-shops">
+                    <label class="question-label">
+                        Where do you usually shop for clothes? <span class="sub-label">(Rate frequency 1 = Rarely/Never to 5 = Frequently)</span>
+                    </label>
+                    
+                    <div class="rating-matrix-card">
+                        <div class="rating-matrix-header">
+                            <span class="matrix-brand-col">Store / Platform</span>
+                            <div class="matrix-scale-cols">
+                                <span>1<br><small>Never</small></span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5<br><small>Always</small></span>
+                            </div>
+                        </div>
+
+                        <div class="rating-matrix-body">
+                            <!-- Zara -->
+                            <div class="rating-row">
+                                <span class="brand-name">Zara</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_zara" value="Zara (1/5)" data-brand="Zara" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_zara" value="Zara (2/5)" data-brand="Zara" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_zara" value="Zara (3/5)" data-brand="Zara" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_zara" value="Zara (4/5)" data-brand="Zara" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_zara" value="Zara (5/5)" data-brand="Zara" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- H&M -->
+                            <div class="rating-row">
+                                <span class="brand-name">H&M</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_hm" value="H&M (1/5)" data-brand="H&M" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_hm" value="H&M (2/5)" data-brand="H&M" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_hm" value="H&M (3/5)" data-brand="H&M" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_hm" value="H&M (4/5)" data-brand="H&M" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_hm" value="H&M (5/5)" data-brand="H&M" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Mango -->
+                            <div class="rating-row">
+                                <span class="brand-name">Mango</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_mango" value="Mango (1/5)" data-brand="Mango" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_mango" value="Mango (2/5)" data-brand="Mango" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_mango" value="Mango (3/5)" data-brand="Mango" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_mango" value="Mango (4/5)" data-brand="Mango" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_mango" value="Mango (5/5)" data-brand="Mango" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Uniqlo -->
+                            <div class="rating-row">
+                                <span class="brand-name">Uniqlo</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_uniqlo" value="Uniqlo (1/5)" data-brand="Uniqlo" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_uniqlo" value="Uniqlo (2/5)" data-brand="Uniqlo" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_uniqlo" value="Uniqlo (3/5)" data-brand="Uniqlo" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_uniqlo" value="Uniqlo (4/5)" data-brand="Uniqlo" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_uniqlo" value="Uniqlo (5/5)" data-brand="Uniqlo" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Farfetch -->
+                            <div class="rating-row">
+                                <span class="brand-name">Farfetch</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_farfetch" value="Farfetch (1/5)" data-brand="Farfetch" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_farfetch" value="Farfetch (2/5)" data-brand="Farfetch" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_farfetch" value="Farfetch (3/5)" data-brand="Farfetch" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_farfetch" value="Farfetch (4/5)" data-brand="Farfetch" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_farfetch" value="Farfetch (5/5)" data-brand="Farfetch" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Myntra -->
+                            <div class="rating-row">
+                                <span class="brand-name">Myntra</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_myntra" value="Myntra (1/5)" data-brand="Myntra" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_myntra" value="Myntra (2/5)" data-brand="Myntra" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_myntra" value="Myntra (3/5)" data-brand="Myntra" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_myntra" value="Myntra (4/5)" data-brand="Myntra" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_myntra" value="Myntra (5/5)" data-brand="Myntra" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Ajio -->
+                            <div class="rating-row">
+                                <span class="brand-name">Ajio</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_ajio" value="Ajio (1/5)" data-brand="Ajio" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_ajio" value="Ajio (2/5)" data-brand="Ajio" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_ajio" value="Ajio (3/5)" data-brand="Ajio" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_ajio" value="Ajio (4/5)" data-brand="Ajio" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_ajio" value="Ajio (5/5)" data-brand="Ajio" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Luxury / designer stores -->
+                            <div class="rating-row">
+                                <span class="brand-name">Luxury / designer stores</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_luxury" value="Luxury stores (1/5)" data-brand="Luxury / designer stores" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_luxury" value="Luxury stores (2/5)" data-brand="Luxury / designer stores" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_luxury" value="Luxury stores (3/5)" data-brand="Luxury / designer stores" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_luxury" value="Luxury stores (4/5)" data-brand="Luxury / designer stores" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_luxury" value="Luxury stores (5/5)" data-brand="Luxury / designer stores" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Instagram / independent brands -->
+                            <div class="rating-row">
+                                <span class="brand-name">Instagram / independent brands</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_insta" value="Instagram brands (1/5)" data-brand="Instagram / independent brands" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_insta" value="Instagram brands (2/5)" data-brand="Instagram / independent brands" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_insta" value="Instagram brands (3/5)" data-brand="Instagram / independent brands" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_insta" value="Instagram brands (4/5)" data-brand="Instagram / independent brands" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_insta" value="Instagram brands (5/5)" data-brand="Instagram / independent brands" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Thrift / preowned platforms -->
+                            <div class="rating-row">
+                                <span class="brand-name">Thrift / preowned platforms</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_thrift" value="Thrift platforms (1/5)" data-brand="Thrift / preowned platforms" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_thrift" value="Thrift platforms (2/5)" data-brand="Thrift / preowned platforms" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_thrift" value="Thrift platforms (3/5)" data-brand="Thrift / preowned platforms" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_thrift" value="Thrift platforms (4/5)" data-brand="Thrift / preowned platforms" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_thrift" value="Thrift platforms (5/5)" data-brand="Thrift / preowned platforms" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Other -->
+                            <div class="rating-row rating-row-other">
+                                <div class="brand-other-input-wrap">
+                                    <span class="brand-name">Other:</span>
+                                    <input type="text" id="shop-other-name" class="other-text-input inline-other-text" placeholder="Specify brand/store...">
+                                </div>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="shop_other" value="Other (1/5)" data-brand="Other" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_other" value="Other (2/5)" data-brand="Other" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_other" value="Other (3/5)" data-brand="Other" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_other" value="Other (4/5)" data-brand="Other" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="shop_other" value="Other (5/5)" data-brand="Other" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Hidden container to synchronize entry.2130890888 payload for Google Forms -->
+                    <div id="hidden-shops-entries"></div>
+                </div>
+
+                <!-- Question 8: Premium / Luxury Purchase -->
+                <div class="question-group" id="group-luxury">
+                    <label class="question-label">
+                        Have you purchased a premium or luxury fashion item in the last 12 months? <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-2">
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1852072366" value="Yes">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Yes</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1852072366" value="No">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 9: Unused Clothes (1-5 Rating Scale) -->
+                <div class="question-group" id="group-unused">
+                    <label class="question-label">
+                        What do you usually do with clothes you no longer wear? <span class="sub-label">(Rate frequency 1 = Rarely/Never to 5 = Frequently)</span>
+                    </label>
+
+                    <div class="rating-matrix-card">
+                        <div class="rating-matrix-header">
+                            <span class="matrix-brand-col">Action / Destination</span>
+                            <div class="matrix-scale-cols">
+                                <span>1<br><small>Never</small></span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5<br><small>Always</small></span>
+                            </div>
+                        </div>
+
+                        <div class="rating-matrix-body">
+                            <!-- Keep in wardrobe -->
+                            <div class="rating-row">
+                                <span class="brand-name">Keep them in my wardrobe</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="unused_keep" value="Keep in wardrobe (1/5)" data-action="Keep in wardrobe" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_keep" value="Keep in wardrobe (2/5)" data-action="Keep in wardrobe" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_keep" value="Keep in wardrobe (3/5)" data-action="Keep in wardrobe" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_keep" value="Keep in wardrobe (4/5)" data-action="Keep in wardrobe" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_keep" value="Keep in wardrobe (5/5)" data-action="Keep in wardrobe" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Give to family/friends -->
+                            <div class="rating-row">
+                                <span class="brand-name">Give them to family / friends</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="unused_family" value="Give to family/friends (1/5)" data-action="Give to family/friends" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_family" value="Give to family/friends (2/5)" data-action="Give to family/friends" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_family" value="Give to family/friends (3/5)" data-action="Give to family/friends" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_family" value="Give to family/friends (4/5)" data-action="Give to family/friends" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_family" value="Give to family/friends (5/5)" data-action="Give to family/friends" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Donate them -->
+                            <div class="rating-row">
+                                <span class="brand-name">Donate them</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="unused_donate" value="Donate them (1/5)" data-action="Donate them" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_donate" value="Donate them (2/5)" data-action="Donate them" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_donate" value="Donate them (3/5)" data-action="Donate them" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_donate" value="Donate them (4/5)" data-action="Donate them" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_donate" value="Donate them (5/5)" data-action="Donate them" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Sell them -->
+                            <div class="rating-row">
+                                <span class="brand-name">Sell them</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="unused_sell" value="Sell them (1/5)" data-action="Sell them" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_sell" value="Sell them (2/5)" data-action="Sell them" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_sell" value="Sell them (3/5)" data-action="Sell them" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_sell" value="Sell them (4/5)" data-action="Sell them" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_sell" value="Sell them (5/5)" data-action="Sell them" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Throw them away -->
+                            <div class="rating-row">
+                                <span class="brand-name">Throw them away</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="unused_throw" value="Throw them away (1/5)" data-action="Throw them away" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_throw" value="Throw them away (2/5)" data-action="Throw them away" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_throw" value="Throw them away (3/5)" data-action="Throw them away" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_throw" value="Throw them away (4/5)" data-action="Throw them away" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_throw" value="Throw them away (5/5)" data-action="Throw them away" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Other -->
+                            <div class="rating-row rating-row-other">
+                                <div class="brand-other-input-wrap">
+                                    <span class="brand-name">Other:</span>
+                                    <input type="text" id="unused-other-name" class="other-text-input inline-other-text" placeholder="Specify action...">
+                                </div>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="unused_other" value="Other (1/5)" data-action="Other" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_other" value="Other (2/5)" data-action="Other" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_other" value="Other (3/5)" data-action="Other" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_other" value="Other (4/5)" data-action="Other" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="unused_other" value="Other (5/5)" data-action="Other" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Hidden container to synchronize entry.1330194199 payload for Google Forms -->
+                    <div id="hidden-unused-entries"></div>
+                </div>
+
+                <!-- Question 10: Ever Sold Preowned -->
+                <div class="question-group" id="group-eversold">
+                    <label class="question-label">
+                        Have you ever sold your preowned clothes? <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-1">
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1656920273" value="Yes, regularly">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Yes, regularly</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1656920273" value="Yes, once or twice">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">Yes, once or twice</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1656920273" value="I tried but couldn't sell them">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">I tried but couldn't sell them</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1656920273" value="No, but I'd like to">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">No, but I'd like to</span>
+                        </label>
+                        <label class="option-card radio-card">
+                            <input type="radio" name="entry.1656920273" value="No, and I'm not interested">
+                            <span class="custom-radio"></span>
+                            <span class="option-text">No, and I'm not interested</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SECTION 3: RESALE PREFERENCES & BARRIERS -->
+            <div class="form-section" data-section="3">
+                <div class="section-heading">
+                    <span class="section-number">03</span>
+                    <div>
+                        <h2 class="section-title">Resale Preferences & Barriers</h2>
+                        <p class="section-desc">What drives or prevents you from selling and buying preowned garments?</p>
+                    </div>
+                </div>
+
+                <!-- Question 11: Reason to Sell (1-5 Rating Scale) -->
+                <div class="question-group" id="group-reasonsell">
+                    <label class="question-label">
+                        What would be the biggest reason for you to sell clothes you no longer wear? <span class="sub-label">(Rate importance 1 = Low Importance to 5 = High Importance)</span>
+                    </label>
+
+                    <div class="rating-matrix-card">
+                        <div class="rating-matrix-header">
+                            <span class="matrix-brand-col">Motivation / Reason</span>
+                            <div class="matrix-scale-cols">
+                                <span>1<br><small>Low</small></span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5<br><small>High</small></span>
+                            </div>
+                        </div>
+
+                        <div class="rating-matrix-body">
+                            <!-- Make money back -->
+                            <div class="rating-row">
+                                <span class="brand-name">Make some money back</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_money" value="Make money back (1/5)" data-reason="Make money back" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_money" value="Make money back (2/5)" data-reason="Make money back" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_money" value="Make money back (3/5)" data-reason="Make money back" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_money" value="Make money back (4/5)" data-reason="Make money back" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_money" value="Make money back (5/5)" data-reason="Make money back" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Free up wardrobe space -->
+                            <div class="rating-row">
+                                <span class="brand-name">Free up wardrobe space</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_space" value="Free up wardrobe space (1/5)" data-reason="Free up space" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_space" value="Free up wardrobe space (2/5)" data-reason="Free up space" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_space" value="Free up wardrobe space (3/5)" data-reason="Free up space" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_space" value="Free up wardrobe space (4/5)" data-reason="Free up space" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_space" value="Free up wardrobe space (5/5)" data-reason="Free up space" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Sell clothes barely worn -->
+                            <div class="rating-row">
+                                <span class="brand-name">Sell clothes I've barely worn</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_barely" value="Sell barely worn clothes (1/5)" data-reason="Sell barely worn" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_barely" value="Sell barely worn clothes (2/5)" data-reason="Sell barely worn" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_barely" value="Sell barely worn clothes (3/5)" data-reason="Sell barely worn" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_barely" value="Sell barely worn clothes (4/5)" data-reason="Sell barely worn" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_barely" value="Sell barely worn clothes (5/5)" data-reason="Sell barely worn" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Recover value from expensive purchases -->
+                            <div class="rating-row">
+                                <span class="brand-name">Recover value from expensive purchases</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_recover" value="Recover expensive value (1/5)" data-reason="Recover expensive value" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_recover" value="Recover expensive value (2/5)" data-reason="Recover expensive value" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_recover" value="Recover expensive value (3/5)" data-reason="Recover expensive value" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_recover" value="Recover expensive value (4/5)" data-reason="Recover expensive value" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_recover" value="Recover expensive value (5/5)" data-reason="Recover expensive value" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Reduce waste -->
+                            <div class="rating-row">
+                                <span class="brand-name">Reduce waste</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_waste" value="Reduce waste (1/5)" data-reason="Reduce waste" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_waste" value="Reduce waste (2/5)" data-reason="Reduce waste" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_waste" value="Reduce waste (3/5)" data-reason="Reduce waste" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_waste" value="Reduce waste (4/5)" data-reason="Reduce waste" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_waste" value="Reduce waste (5/5)" data-reason="Reduce waste" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Moving / relocating -->
+                            <div class="rating-row">
+                                <span class="brand-name">Moving / relocating</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_move" value="Moving/relocating (1/5)" data-reason="Moving/relocating" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_move" value="Moving/relocating (2/5)" data-reason="Moving/relocating" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_move" value="Moving/relocating (3/5)" data-reason="Moving/relocating" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_move" value="Moving/relocating (4/5)" data-reason="Moving/relocating" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_move" value="Moving/relocating (5/5)" data-reason="Moving/relocating" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                            <!-- Other -->
+                            <div class="rating-row rating-row-other">
+                                <div class="brand-other-input-wrap">
+                                    <span class="brand-name">Other:</span>
+                                    <input type="text" id="reasonsell-other-name" class="other-text-input inline-other-text" placeholder="Specify reason...">
+                                </div>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_other" value="Other (1/5)" data-reason="Other" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_other" value="Other (2/5)" data-reason="Other" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_other" value="Other (3/5)" data-reason="Other" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_other" value="Other (4/5)" data-reason="Other" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="reasonsell_other" value="Other (5/5)" data-reason="Other" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Hidden container to synchronize entry.1726210043 payload for Google Forms -->
+                    <div id="hidden-reasonsell-entries"></div>
+                </div>
+
+                <!-- Question 12: Friction / Barriers to Selling Online (1-5 Rating Scale) -->
+                <div class="question-group" id="group-stopsell">
+                    <label class="question-label">
+                        What would stop you from selling your clothes online? <span class="sub-label">(Rate concern 1 = Not a Concern to 5 = Major Concern)</span>
+                    </label>
+
+                    <div class="rating-matrix-card">
+                        <div class="rating-matrix-header">
+                            <span class="matrix-brand-col">Barrier / Concern</span>
+                            <div class="matrix-scale-cols">
+                                <span>1<br><small>Low</small></span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5<br><small>Major</small></span>
+                            </div>
+                        </div>
+
+                        <div class="rating-matrix-body">
+                            <div class="rating-row">
+                                <span class="brand-name">Taking photos and creating listings</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_photos" value="Photos/listings (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_photos" value="Photos/listings (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_photos" value="Photos/listings (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_photos" value="Photos/listings (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_photos" value="Photos/listings (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Deciding the right price</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_price" value="Deciding price (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_price" value="Deciding price (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_price" value="Deciding price (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_price" value="Deciding price (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_price" value="Deciding price (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Finding serious buyers</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_buyers" value="Finding buyers (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_buyers" value="Finding buyers (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_buyers" value="Finding buyers (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_buyers" value="Finding buyers (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_buyers" value="Finding buyers (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Negotiating with buyers</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_negotiate" value="Negotiating (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_negotiate" value="Negotiating (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_negotiate" value="Negotiating (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_negotiate" value="Negotiating (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_negotiate" value="Negotiating (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Packaging / shipping</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_shipping" value="Packaging/shipping (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_shipping" value="Packaging/shipping (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_shipping" value="Packaging/shipping (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_shipping" value="Packaging/shipping (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_shipping" value="Packaging/shipping (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Arranging pickup</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_pickup" value="Arranging pickup (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_pickup" value="Arranging pickup (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_pickup" value="Arranging pickup (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_pickup" value="Arranging pickup (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_pickup" value="Arranging pickup (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Concern about scams / fraud</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_scams" value="Scam concerns (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_scams" value="Scam concerns (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_scams" value="Scam concerns (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_scams" value="Scam concerns (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_scams" value="Scam concerns (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Payment concerns</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_payment" value="Payment concerns (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_payment" value="Payment concerns (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_payment" value="Payment concerns (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_payment" value="Payment concerns (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_payment" value="Payment concerns (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Privacy / safety</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_privacy" value="Privacy concerns (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_privacy" value="Privacy concerns (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_privacy" value="Privacy concerns (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_privacy" value="Privacy concerns (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_privacy" value="Privacy concerns (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Too much effort for too little money</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_effort" value="Too much effort (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_effort" value="Too much effort (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_effort" value="Too much effort (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_effort" value="Too much effort (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_effort" value="Too much effort (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row rating-row-other">
+                                <div class="brand-other-input-wrap">
+                                    <span class="brand-name">Other:</span>
+                                    <input type="text" id="stopsell-other-name" class="other-text-input inline-other-text" placeholder="Specify concern...">
+                                </div>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="stopsell_other" value="Other (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_other" value="Other (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_other" value="Other (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_other" value="Other (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="stopsell_other" value="Other (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="hidden-stopsell-entries"></div>
+                </div>
+
+                <!-- Question 13: Comfort when buying (1-5 Rating Scale) -->
+                <div class="question-group" id="group-buyingcomfort">
+                    <label class="question-label">
+                        When buying preowned clothing, what would make you comfortable purchasing it? <span class="sub-label">(Rate importance 1 = Unimportant to 5 = Essential)</span>
+                    </label>
+
+                    <div class="rating-matrix-card">
+                        <div class="rating-matrix-header">
+                            <span class="matrix-brand-col">Comfort Factor</span>
+                            <div class="matrix-scale-cols">
+                                <span>1<br><small>Low</small></span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5<br><small>Essential</small></span>
+                            </div>
+                        </div>
+
+                        <div class="rating-matrix-body">
+                            <div class="rating-row">
+                                <span class="brand-name">Verified / authenticated products</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_verified" value="Verified products (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_verified" value="Verified products (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_verified" value="Verified products (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_verified" value="Verified products (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_verified" value="Verified products (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Detailed photos</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_photos" value="Detailed photos (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_photos" value="Detailed photos (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_photos" value="Detailed photos (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_photos" value="Detailed photos (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_photos" value="Detailed photos (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Accurate condition grading</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_grading" value="Condition grading (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_grading" value="Condition grading (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_grading" value="Condition grading (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_grading" value="Condition grading (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_grading" value="Condition grading (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Proof of purchase</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_proof" value="Proof of purchase (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_proof" value="Proof of purchase (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_proof" value="Proof of purchase (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_proof" value="Proof of purchase (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_proof" value="Proof of purchase (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Seller ratings / reviews</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_ratings" value="Seller ratings (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_ratings" value="Seller ratings (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_ratings" value="Seller ratings (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_ratings" value="Seller ratings (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_ratings" value="Seller ratings (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Easy returns</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_returns" value="Easy returns (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_returns" value="Easy returns (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_returns" value="Easy returns (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_returns" value="Easy returns (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_returns" value="Easy returns (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Secure payment</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_payment" value="Secure payment (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_payment" value="Secure payment (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_payment" value="Secure payment (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_payment" value="Secure payment (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_payment" value="Secure payment (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Platform-managed delivery</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_delivery" value="Platform delivery (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_delivery" value="Platform delivery (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_delivery" value="Platform delivery (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_delivery" value="Platform delivery (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_delivery" value="Platform delivery (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Seller verification</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_seller" value="Seller verification (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_seller" value="Seller verification (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_seller" value="Seller verification (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_seller" value="Seller verification (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_seller" value="Seller verification (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row rating-row-other">
+                                <div class="brand-other-input-wrap">
+                                    <span class="brand-name">Other:</span>
+                                    <input type="text" id="comfort-other-name" class="other-text-input inline-other-text" placeholder="Specify factor...">
+                                </div>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="comfort_other" value="Other (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_other" value="Other (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_other" value="Other (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_other" value="Other (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="comfort_other" value="Other (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="hidden-buyingcomfort-entries"></div>
+                </div>
+
+                <!-- Question 14: What matters most when buying preowned (1-5 Rating Scale) -->
+                <div class="question-group" id="group-mattersmost">
+                    <label class="question-label">
+                        What matters most when buying preowned clothing? <span class="sub-label">(Rate importance 1 = Unimportant to 5 = Extremely Important)</span>
+                    </label>
+
+                    <div class="rating-matrix-card">
+                        <div class="rating-matrix-header">
+                            <span class="matrix-brand-col">Attribute</span>
+                            <div class="matrix-scale-cols">
+                                <span>1<br><small>Low</small></span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5<br><small>High</small></span>
+                            </div>
+                        </div>
+
+                        <div class="rating-matrix-body">
+                            <div class="rating-row">
+                                <span class="brand-name">Price</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_price" value="Price (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_price" value="Price (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_price" value="Price (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_price" value="Price (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_price" value="Price (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Brand</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_brand" value="Brand (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_brand" value="Brand (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_brand" value="Brand (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_brand" value="Brand (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_brand" value="Brand (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Condition</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_condition" value="Condition (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_condition" value="Condition (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_condition" value="Condition (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_condition" value="Condition (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_condition" value="Condition (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Authenticity</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_authenticity" value="Authenticity (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_authenticity" value="Authenticity (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_authenticity" value="Authenticity (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_authenticity" value="Authenticity (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_authenticity" value="Authenticity (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Style / uniqueness</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_style" value="Style/uniqueness (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_style" value="Style/uniqueness (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_style" value="Style/uniqueness (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_style" value="Style/uniqueness (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_style" value="Style/uniqueness (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Sustainability</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_sustainability" value="Sustainability (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_sustainability" value="Sustainability (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_sustainability" value="Sustainability (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_sustainability" value="Sustainability (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_sustainability" value="Sustainability (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Rarity / exclusivity</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_rarity" value="Rarity/exclusivity (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_rarity" value="Rarity/exclusivity (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_rarity" value="Rarity/exclusivity (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_rarity" value="Rarity/exclusivity (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_rarity" value="Rarity/exclusivity (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Size / fit</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_fit" value="Size/fit (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_fit" value="Size/fit (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_fit" value="Size/fit (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_fit" value="Size/fit (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_fit" value="Size/fit (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                            <div class="rating-row">
+                                <span class="brand-name">Convenience</span>
+                                <div class="rating-options">
+                                    <label class="rate-btn"><input type="radio" name="matters_convenience" value="Convenience (1/5)" data-rate="1"> <span>1</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_convenience" value="Convenience (2/5)" data-rate="2"> <span>2</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_convenience" value="Convenience (3/5)" data-rate="3"> <span>3</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_convenience" value="Convenience (4/5)" data-rate="4"> <span>4</span></label>
+                                    <label class="rate-btn"><input type="radio" name="matters_convenience" value="Convenience (5/5)" data-rate="5"> <span>5</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="hidden-mattersmost-entries"></div>
+                </div>
+
+            </div>
+
+            <!-- SECTION 4: VISION & TRUST -->
+            <div class="form-section" data-section="4">
+                <div class="section-heading">
+                    <span class="section-number">04</span>
+                    <div>
+                        <h2 class="section-title">Platform Vision & Trust</h2>
+                        <p class="section-desc">Envisioning the ideal preowned fashion platform for Bangalore.</p>
+                    </div>
+                </div>
+
+                <!-- Question 15: Preferred Model -->
+                <div class="question-group" id="group-model">
+                    <label class="question-label">
+                        Imagine a platform where women in Bangalore can easily sell and buy preowned fashion. Which model would you prefer? <span class="required-star">*</span>
+                    </label>
+                    <div class="options-grid grid-1">
+                        <label class="option-card radio-card feature-model-card">
+                            <input type="radio" name="entry.21080423" value="I list it myself and handle the sale">
+                            <span class="custom-radio"></span>
+                            <div class="card-content-wrap">
+                                <span class="option-title">Self-Service Model</span>
+                                <span class="option-desc">I list it myself and handle the sale directly.</span>
+                            </div>
+                        </label>
+                        <label class="option-card radio-card feature-model-card">
+                            <input type="radio" name="entry.21080423" value="The platform helps me list it and handles buyers">
+                            <span class="custom-radio"></span>
+                            <div class="card-content-wrap">
+                                <span class="option-title">Assisted Listing</span>
+                                <span class="option-desc">The platform helps me list items and manages buyer queries.</span>
+                            </div>
+                        </label>
+                        <label class="option-card radio-card feature-model-card highlight-model">
+                            <input type="radio" name="entry.21080423" value="The platform picks it up, lists it, and handles the entire sale">
+                            <span class="custom-radio"></span>
+                            <div class="card-content-wrap">
+                                <span class="option-title">Full White-Glove Consignment</span>
+                                <span class="option-desc">The platform picks up items, lists, authenticates, and handles the complete sale.</span>
+                            </div>
+                        </label>
+                        <label class="option-card radio-card feature-model-card">
+                            <input type="radio" name="entry.21080423" value="I don't want to sell, but I would buy">
+                            <span class="custom-radio"></span>
+                            <div class="card-content-wrap">
+                                <span class="option-title">Buyer Only</span>
+                                <span class="option-desc">I don't plan to sell, but I am excited to buy curated preowned fashion.</span>
+                            </div>
+                        </label>
+                        <label class="option-card radio-card feature-model-card">
+                            <input type="radio" name="entry.21080423" value="I wouldn't use such a platform">
+                            <span class="custom-radio"></span>
+                            <div class="card-content-wrap">
+                                <span class="option-title">Uninterested</span>
+                                <span class="option-desc">I wouldn't use such a platform.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 16: Trust & Feedback (Textarea) -->
+                <div class="question-group" id="group-trust">
+                    <label class="question-label" for="trust-feedback-input">
+                        What would make you trust a preowned fashion marketplace enough to use it?
+                        <span class="sub-label">(Optional — share your thoughts, features, or suggestions)</span>
+                    </label>
+                    <div class="textarea-wrapper">
+                        <textarea id="trust-feedback-input" name="entry.1398588771" class="custom-textarea" rows="4" placeholder="e.g. Doorstep pickup, doorstep authentication, instant payout, buyer protection guarantee..."></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Form Validation Error Message Banner -->
+            <div class="error-banner hidden" id="errorBanner">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span id="errorMessage">Please answer all questions before proceeding.</span>
+            </div>
+
+            <!-- Action Navigation Buttons -->
+            <div class="nav-controls">
+                <button type="button" class="btn btn-secondary hidden" id="prevBtn">
+                    <i class="fa-solid fa-arrow-left"></i> Previous
+                </button>
+                <button type="button" class="btn btn-primary" id="nextBtn">
+                    Next Section <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button type="submit" class="btn btn-submit hidden" id="submitBtn">
+                    <span class="btn-text">Submit Response</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <div class="spinner hidden" id="submitSpinner"></div>
+                </button>
+            </div>
+
+        </form>
+
+        <!-- SUCCESS / CONFIRMATION MODAL CARD -->
+        <div class="confirmation-card hidden" id="confirmationCard">
+            <div class="success-icon-wrapper">
+                <div class="success-icon-bg">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+            <h2 class="thank-you-title">Thank You!</h2>
+            <p class="thank-you-message">
+                Your response has been successfully recorded and synced with the <strong>Second Story</strong> fashion research team.
+            </p>
+
+            <div class="summary-box" id="summaryBox">
+                <h3><i class="fa-solid fa-clipboard-check"></i> Your Response Snapshot</h3>
+                <div class="summary-content" id="summaryContent">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <div class="confirmation-actions">
+                <button type="button" class="btn btn-outline" id="newResponseBtn">
+                    <i class="fa-solid fa-rotate-left"></i> Submit Another Response
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 Second Story Fashion Research • Bangalore, India</p>
+        </footer>
+
+    </div>
+
+    <script>
+/* ==========================================================================
+   Second Story — Preworn Fashion Survey Logic
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // State variables
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    // DOM Elements
+    const surveyForm = document.getElementById('surveyForm');
+    const sections = document.querySelectorAll('.form-section');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitSpinner = document.getElementById('submitSpinner');
+    const errorBanner = document.getElementById('errorBanner');
+    const errorMessage = document.getElementById('errorMessage');
+
+    const progressWrapper = document.getElementById('progressWrapper');
+    const progressBarFill = document.getElementById('progressBarFill');
+    const stepCounterText = document.getElementById('stepCounterText');
+    const progressPercentage = document.getElementById('progressPercentage');
+    const stepDots = document.querySelectorAll('.step-dot');
+
+    const confirmationCard = document.getElementById('confirmationCard');
+    const summaryContent = document.getElementById('summaryContent');
+    const newResponseBtn = document.getElementById('newResponseBtn');
+
+    // Questions list mapping for display summary
+    const questionLabels = {
+        'entry.236224908': 'Gender',
+        'entry.921532506': 'Age Range',
+        'entry.1801662950': 'Occupation',
+        'entry.1701656037': 'Bangalore Area',
+        'entry.317039661': 'Monthly Fashion Spend',
+        'entry.641614989': 'Shopping Frequency',
+        'entry.2130890888': 'Usual Shopping Places',
+        'entry.1852072366': 'Luxury Purchase (Last 12 Mo)',
+        'entry.1330194199': 'Unused Clothes Destination',
+        'entry.1656920273': 'Ever Sold Preowned',
+        'entry.1726210043': 'Main Reasons to Sell',
+        'entry.819080465': 'Barriers to Selling Online',
+        'entry.544833170': 'Comfort Factors when Buying',
+        'entry.1915593258': 'Most Important Factors',
+        'entry.21080423': 'Preferred Platform Model',
+        'entry.1398588771': 'Trust & Marketplace Feedback'
+    };
+
+    // Initialize Card Event Listeners
+    initOptionCards();
+    updateStepUI();
+
+    // Option Card Selection & Toggle Logic
+    function initOptionCards() {
+        const optionCards = document.querySelectorAll('.option-card');
+        
+        optionCards.forEach(card => {
+            const input = card.querySelector('input');
+
+            card.addEventListener('click', (e) => {
+                // If user clicked directly on the input, let browser handle value change
+                if (e.target.tagName !== 'INPUT') {
+                    if (input.type === 'radio') {
+                        input.checked = true;
+                    } else if (input.type === 'checkbox') {
+                        input.checked = !input.checked;
+                    }
+                    // Dispatch change event to trigger handlers
+                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            });
+
+            if (input) {
+                input.addEventListener('change', () => {
+                    handleInputChange(input, card);
+                });
+            }
+        });
+    }
+
+    function handleInputChange(input, card) {
+        hideError();
+
+        if (input.type === 'radio') {
+            // Unselect sibling radio cards in the same group
+            const name = input.name;
+            const sameGroupCards = document.querySelectorAll(`input[name="${name}"]`);
+            sameGroupCards.forEach(r => {
+                const parentCard = r.closest('.option-card');
+                if (parentCard) parentCard.classList.remove('selected');
+                
+                // Hide associated "Other" input if present
+                const otherTargetId = r.getAttribute('data-other-target');
+                if (otherTargetId) {
+                    const otherContainer = document.getElementById(otherTargetId);
+                    if (otherContainer) {
+                        otherContainer.classList.add('hidden');
+                        const textInput = otherContainer.querySelector('input');
+                        if (textInput) textInput.required = false;
+                    }
+                }
+            });
+
+            card.classList.add('selected');
+
+            // Handle "Other" radio target
+            const otherTargetId = input.getAttribute('data-other-target');
+            if (input.checked && otherTargetId) {
+                const otherContainer = document.getElementById(otherTargetId);
+                if (otherContainer) {
+                    otherContainer.classList.remove('hidden');
+                    const textInput = otherContainer.querySelector('input');
+                    if (textInput) {
+                        textInput.required = true;
+                        textInput.focus();
+                    }
+                }
+            }
+        } 
+        else if (input.type === 'checkbox') {
+            if (input.checked) {
+                card.classList.add('selected');
+            } else {
+                card.classList.remove('selected');
+            }
+
+            // Handle "Other" checkbox target
+            const otherTargetId = input.getAttribute('data-other-target');
+            if (otherTargetId) {
+                const otherContainer = document.getElementById(otherTargetId);
+                if (otherContainer) {
+                    if (input.checked) {
+                        otherContainer.classList.remove('hidden');
+                        const textInput = otherContainer.querySelector('input');
+                        if (textInput) {
+                            textInput.required = true;
+                            textInput.focus();
+                        }
+                    } else {
+                        otherContainer.classList.add('hidden');
+                        const textInput = otherContainer.querySelector('input');
+                        if (textInput) textInput.required = false;
+                    }
+                }
+            }
+        }
+    }
+
+    // Step Dots Navigation Click Handler - Allows free navigation anytime
+    stepDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const targetStep = parseInt(dot.getAttribute('data-step'));
+            currentStep = targetStep;
+            updateStepUI();
+        });
+    });
+
+    // Previous Button Click
+    prevBtn.addEventListener('click', () => {
+        if (currentStep > 1) {
+            currentStep--;
+            updateStepUI();
+        }
+    });
+
+    // Next Button Click - Allows advancing freely
+    nextBtn.addEventListener('click', () => {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            updateStepUI();
+        }
+    });
+
+    // Update UI for active section and step indicators
+    function updateStepUI() {
+        hideError();
+
+        sections.forEach((sec, idx) => {
+            if (parseInt(sec.getAttribute('data-section')) === currentStep) {
+                sec.classList.add('active');
+            } else {
+                sec.classList.remove('active');
+            }
+        });
+
+        // Update Section Step Text
+        stepCounterText.textContent = `Section ${currentStep} of ${totalSteps}`;
+
+        // Calculate progress based on answered questions count
+        updateProgressBar();
+
+        // Update Step Dots
+        stepDots.forEach(dot => {
+            const stepNum = parseInt(dot.getAttribute('data-step'));
+            dot.classList.remove('active', 'completed');
+            if (stepNum === currentStep) {
+                dot.classList.add('active');
+            } else if (stepNum < currentStep) {
+                dot.classList.add('completed');
+            }
+        });
+
+        // Update Nav Buttons Visibility
+        if (currentStep === 1) {
+            prevBtn.classList.add('hidden');
+        } else {
+            prevBtn.classList.remove('hidden');
+        }
+
+        if (currentStep === totalSteps) {
+            nextBtn.classList.add('hidden');
+            submitBtn.classList.remove('hidden');
+        } else {
+            nextBtn.classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Calculate progress percentage based on actual answered questions
+    function updateProgressBar() {
+        const allQuestionGroups = document.querySelectorAll('.question-group');
+        const totalQuestions = allQuestionGroups.length;
+        let answeredCount = 0;
+
+        allQuestionGroups.forEach(group => {
+            const radios = group.querySelectorAll('input[type="radio"]');
+            const checkboxes = group.querySelectorAll('input[type="checkbox"]');
+            const textarea = group.querySelector('textarea');
+            const textInput = group.querySelector('.other-text-input');
+
+            let isAnswered = false;
+
+            if (radios.length > 0) {
+                const checkedRadio = group.querySelector('input[type="radio"]:checked');
+                if (checkedRadio) {
+                    if (checkedRadio.value === '__other_option__') {
+                        if (textInput && textInput.value.trim().length > 0) {
+                            isAnswered = true;
+                        }
+                    } else {
+                        isAnswered = true;
+                    }
+                }
+            } else if (checkboxes.length > 0) {
+                const checkedBoxes = group.querySelectorAll('input[type="checkbox"]:checked');
+                if (checkedBoxes.length > 0) {
+                    isAnswered = true;
+                }
+            } else if (textarea) {
+                if (textarea.value.trim().length > 0) {
+                    isAnswered = true;
+                }
+            }
+
+            if (isAnswered) {
+                answeredCount++;
+            }
+        });
+
+        const percentage = totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0;
+        progressBarFill.style.width = `${percentage}%`;
+        progressPercentage.textContent = `${percentage}% Completed (${answeredCount}/${totalQuestions})`;
+    }
+
+    // Synchronize Question 7 ratings to Google Form hidden inputs entry.2130890888
+    function syncShopsRatings() {
+        const hiddenContainer = document.getElementById('hidden-shops-entries');
+        if (!hiddenContainer) return;
+        
+        hiddenContainer.innerHTML = '';
+        
+        const ratingRows = document.querySelectorAll('#group-shops .rating-row');
+        ratingRows.forEach(row => {
+            const checked = row.querySelector('input[type="radio"]:checked');
+            if (checked) {
+                let val = checked.value;
+                if (checked.name === 'shop_other') {
+                    const otherName = document.getElementById('shop-other-name');
+                    const nameStr = (otherName && otherName.value.trim()) ? otherName.value.trim() : 'Other';
+                    val = `${nameStr} (${checked.getAttribute('data-rate')}/5)`;
+                }
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'entry.2130890888';
+                input.value = val;
+                hiddenContainer.appendChild(input);
+            }
+        });
+    }
+
+    const groupShops = document.getElementById('group-shops');
+    if (groupShops) {
+        groupShops.addEventListener('change', () => {
+            syncShopsRatings();
+            updateProgressBar();
+        });
+        const otherInput = document.getElementById('shop-other-name');
+        if (otherInput) {
+            otherInput.addEventListener('input', syncShopsRatings);
+        }
+    }
+
+    // Synchronize Question 9 ratings to Google Form hidden inputs entry.1330194199
+    function syncUnusedRatings() {
+        const hiddenContainer = document.getElementById('hidden-unused-entries');
+        if (!hiddenContainer) return;
+        
+        hiddenContainer.innerHTML = '';
+        
+        const ratingRows = document.querySelectorAll('#group-unused .rating-row');
+        ratingRows.forEach(row => {
+            const checked = row.querySelector('input[type="radio"]:checked');
+            if (checked) {
+                let val = checked.value;
+                if (checked.name === 'unused_other') {
+                    const otherName = document.getElementById('unused-other-name');
+                    const nameStr = (otherName && otherName.value.trim()) ? otherName.value.trim() : 'Other';
+                    val = `${nameStr} (${checked.getAttribute('data-rate')}/5)`;
+                }
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'entry.1330194199';
+                input.value = val;
+                hiddenContainer.appendChild(input);
+            }
+        });
+    }
+
+    const groupUnused = document.getElementById('group-unused');
+    if (groupUnused) {
+        groupUnused.addEventListener('change', () => {
+            syncUnusedRatings();
+            updateProgressBar();
+        });
+        const otherInput = document.getElementById('unused-other-name');
+        if (otherInput) {
+            otherInput.addEventListener('input', syncUnusedRatings);
+        }
+    }
+
+    // Synchronize Question 11 ratings to Google Form hidden inputs entry.1726210043
+    function syncReasonSellRatings() {
+        const hiddenContainer = document.getElementById('hidden-reasonsell-entries');
+        if (!hiddenContainer) return;
+        
+        hiddenContainer.innerHTML = '';
+        
+        const ratingRows = document.querySelectorAll('#group-reasonsell .rating-row');
+        ratingRows.forEach(row => {
+            const checked = row.querySelector('input[type="radio"]:checked');
+            if (checked) {
+                let val = checked.value;
+                if (checked.name === 'reasonsell_other') {
+                    const otherName = document.getElementById('reasonsell-other-name');
+                    const nameStr = (otherName && otherName.value.trim()) ? otherName.value.trim() : 'Other';
+                    val = `${nameStr} (${checked.getAttribute('data-rate')}/5)`;
+                }
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'entry.1726210043';
+                input.value = val;
+                hiddenContainer.appendChild(input);
+            }
+        });
+    }
+
+    const groupReasonSell = document.getElementById('group-reasonsell');
+    if (groupReasonSell) {
+        groupReasonSell.addEventListener('change', () => {
+            syncReasonSellRatings();
+            updateProgressBar();
+        });
+        const otherInput = document.getElementById('reasonsell-other-name');
+        if (otherInput) {
+            otherInput.addEventListener('input', syncReasonSellRatings);
+        }
+    }
+
+    // Synchronize Question 12 ratings to Google Form hidden inputs entry.819080465
+    function syncStopSellRatings() {
+        const hiddenContainer = document.getElementById('hidden-stopsell-entries');
+        if (!hiddenContainer) return;
+        hiddenContainer.innerHTML = '';
+        const ratingRows = document.querySelectorAll('#group-stopsell .rating-row');
+        ratingRows.forEach(row => {
+            const checked = row.querySelector('input[type="radio"]:checked');
+            if (checked) {
+                let val = checked.value;
+                if (checked.name === 'stopsell_other') {
+                    const otherName = document.getElementById('stopsell-other-name');
+                    const nameStr = (otherName && otherName.value.trim()) ? otherName.value.trim() : 'Other';
+                    val = `${nameStr} (${checked.getAttribute('data-rate')}/5)`;
+                }
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'entry.819080465';
+                input.value = val;
+                hiddenContainer.appendChild(input);
+            }
+        });
+    }
+
+    const groupStopSell = document.getElementById('group-stopsell');
+    if (groupStopSell) {
+        groupStopSell.addEventListener('change', () => {
+            syncStopSellRatings();
+            updateProgressBar();
+        });
+        const otherInput = document.getElementById('stopsell-other-name');
+        if (otherInput) otherInput.addEventListener('input', syncStopSellRatings);
+    }
+
+    // Synchronize Question 13 ratings to Google Form hidden inputs entry.544833170
+    function syncBuyingComfortRatings() {
+        const hiddenContainer = document.getElementById('hidden-buyingcomfort-entries');
+        if (!hiddenContainer) return;
+        hiddenContainer.innerHTML = '';
+        const ratingRows = document.querySelectorAll('#group-buyingcomfort .rating-row');
+        ratingRows.forEach(row => {
+            const checked = row.querySelector('input[type="radio"]:checked');
+            if (checked) {
+                let val = checked.value;
+                if (checked.name === 'comfort_other') {
+                    const otherName = document.getElementById('comfort-other-name');
+                    const nameStr = (otherName && otherName.value.trim()) ? otherName.value.trim() : 'Other';
+                    val = `${nameStr} (${checked.getAttribute('data-rate')}/5)`;
+                }
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'entry.544833170';
+                input.value = val;
+                hiddenContainer.appendChild(input);
+            }
+        });
+    }
+
+    const groupBuyingComfort = document.getElementById('group-buyingcomfort');
+    if (groupBuyingComfort) {
+        groupBuyingComfort.addEventListener('change', () => {
+            syncBuyingComfortRatings();
+            updateProgressBar();
+        });
+        const otherInput = document.getElementById('comfort-other-name');
+        if (otherInput) otherInput.addEventListener('input', syncBuyingComfortRatings);
+    }
+
+    // Synchronize Question 14 ratings to Google Form hidden inputs entry.1915593258
+    function syncMattersMostRatings() {
+        const hiddenContainer = document.getElementById('hidden-mattersmost-entries');
+        if (!hiddenContainer) return;
+        hiddenContainer.innerHTML = '';
+        const ratingRows = document.querySelectorAll('#group-mattersmost .rating-row');
+        ratingRows.forEach(row => {
+            const checked = row.querySelector('input[type="radio"]:checked');
+            if (checked) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'entry.1915593258';
+                input.value = checked.value;
+                hiddenContainer.appendChild(input);
+            }
+        });
+    }
+
+    const groupMattersMost = document.getElementById('group-mattersmost');
+    if (groupMattersMost) {
+        groupMattersMost.addEventListener('change', () => {
+            syncMattersMostRatings();
+            updateProgressBar();
+        });
+    }
+
+    // Attach real-time input listeners to form to update progress live on answer input
+    surveyForm.addEventListener('change', updateProgressBar);
+    surveyForm.addEventListener('input', updateProgressBar);
+
+    // Section Validation
+    function validateCurrentSection() {
+        const activeSection = document.querySelector(`.form-section[data-section="${currentStep}"]`);
+        const questionGroups = activeSection.querySelectorAll('.question-group');
+        let isValid = true;
+        let firstErrorGroup = null;
+
+        questionGroups.forEach(group => {
+            const radios = group.querySelectorAll('input[type="radio"]');
+            const checkboxes = group.querySelectorAll('input[type="checkbox"]');
+            const otherInput = group.querySelector('.other-text-input');
+
+            let groupAnswered = true;
+
+            if (radios.length > 0) {
+                const checkedRadio = group.querySelector('input[type="radio"]:checked');
+                if (!checkedRadio) {
+                    groupAnswered = false;
+                } else if (checkedRadio.value === '__other_option__' && otherInput) {
+                    if (!otherInput.value.trim()) {
+                        groupAnswered = false;
+                    }
+                }
+            } else if (checkboxes.length > 0) {
+                const checkedBoxes = group.querySelectorAll('input[type="checkbox"]:checked');
+                if (checkedBoxes.length === 0) {
+                    groupAnswered = false;
+                } else {
+                    checkedBoxes.forEach(cb => {
+                        if (cb.value === '__other_option__' && otherInput && !otherInput.value.trim()) {
+                            groupAnswered = false;
+                        }
+                    });
+                }
+            }
+
+            if (!groupAnswered) {
+                isValid = false;
+                if (!firstErrorGroup) firstErrorGroup = group;
+            }
+        });
+
+        if (!isValid) {
+            showError('Please complete all required fields before moving forward.');
+            if (firstErrorGroup) {
+                firstErrorGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        return isValid;
+    }
+
+    function showError(msg) {
+        errorMessage.textContent = msg;
+        errorBanner.classList.remove('hidden');
+    }
+
+    function hideError() {
+        errorBanner.classList.add('hidden');
+    }
+
+    // Form Submission Handling
+    surveyForm.addEventListener('submit', (e) => {
+        // Show spinner state
+        submitSpinner.classList.remove('hidden');
+        submitBtn.disabled = true;
+        
+        // Flag for iframe onload handler
+        window.submitted = true;
+
+        // Fallback timer if iframe load isn't triggered (e.g. CORS block notice)
+        setTimeout(() => {
+            handleFormSubmitted();
+        }, 1500);
+    });
+
+    // Form Submitted Handler
+    window.handleFormSubmitted = function() {
+        submitSpinner.classList.add('hidden');
+        submitBtn.disabled = false;
+
+        // Hide form & progress wrapper
+        surveyForm.classList.add('hidden');
+        progressWrapper.classList.add('hidden');
+
+        // Populate Summary
+        renderSummary();
+
+        // Show Confirmation
+        confirmationCard.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Render Response Summary
+    function renderSummary() {
+        const formData = new FormData(surveyForm);
+        const summaryMap = {};
+
+        for (let [key, val] of formData.entries()) {
+            if (!val || val === '__other_option__') continue;
+            
+            if (key.endsWith('.other_option_response')) {
+                // Attach custom text value to parent key
+                const baseKey = key.replace('.other_option_response', '');
+                if (summaryMap[baseKey]) {
+                    summaryMap[baseKey].push(`Other: "${val}"`);
+                } else {
+                    summaryMap[baseKey] = [`Other: "${val}"`];
+                }
+            } else {
+                if (summaryMap[key]) {
+                    summaryMap[key].push(val);
+                } else {
+                    summaryMap[key] = [val];
+                }
+            }
+        }
+
+        summaryContent.innerHTML = '';
+        
+        Object.keys(questionLabels).forEach(key => {
+            const answers = summaryMap[key];
+            if (answers && answers.length > 0) {
+                const item = document.createElement('div');
+                item.className = 'summary-item';
+                
+                const qLabel = document.createElement('div');
+                qLabel.className = 'summary-q';
+                qLabel.textContent = questionLabels[key];
+
+                const aLabel = document.createElement('div');
+                aLabel.className = 'summary-a';
+                aLabel.textContent = answers.join(', ');
+
+                item.appendChild(qLabel);
+                item.appendChild(aLabel);
+                summaryContent.appendChild(item);
+            }
+        });
+    }
+
+    // Submit Another Response Handler
+    newResponseBtn.addEventListener('click', () => {
+        surveyForm.reset();
+        
+        // Reset option card selections
+        document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+        document.querySelectorAll('.other-input-container').forEach(cont => cont.classList.add('hidden'));
+
+        confirmationCard.classList.add('hidden');
+        surveyForm.classList.remove('hidden');
+        progressWrapper.classList.remove('hidden');
+
+        currentStep = 1;
+        updateStepUI();
+    });
+
+});
+
+</script>
+</body>
+</html>

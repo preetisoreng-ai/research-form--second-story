@@ -1,0 +1,251 @@
+[
+  {
+    "id": 1028889228,
+    "text": "Gender",
+    "desc": null,
+    "type": 2,
+    "entry_id": 236224908,
+    "choices": [
+      "Female",
+      "Male"
+    ]
+  },
+  {
+    "id": 424186504,
+    "text": "What is your age range? ",
+    "desc": null,
+    "type": 2,
+    "entry_id": 921532506,
+    "choices": [
+      "Under 18",
+      "18\u201324",
+      "25\u201329",
+      "30\u201334",
+      "35\u201344",
+      "45+"
+    ]
+  },
+  {
+    "id": 1927551267,
+    "text": "  What best describes your occupation?  ",
+    "desc": null,
+    "type": 2,
+    "entry_id": 1801662950,
+    "choices": [
+      "Student",
+      "Working professional",
+      "Entrepreneur / Business owner",
+      "Freelancer / Self-employed",
+      "Homemaker",
+      "Currently not working",
+      "Other"
+    ]
+  },
+  {
+    "id": 628762331,
+    "text": "  Which area of Bangalore do you live in?  ",
+    "desc": null,
+    "type": 2,
+    "entry_id": 1701656037,
+    "choices": [
+      "Koramangala",
+      "HSR Layout",
+      "Indiranagar",
+      "Whitefield",
+      "Sarjapur",
+      "Bellandur",
+      "Marathahalli",
+      "JP Nagar",
+      "Jayanagar",
+      "Richmond Town / CBD",
+      "Hebbal",
+      "Yelahanka",
+      "Electronic City",
+      "Other"
+    ]
+  },
+  {
+    "id": 74301221,
+    "text": "  Approximately how much do you spend on fashion/clothing per month?  ",
+    "desc": null,
+    "type": 2,
+    "entry_id": 317039661,
+    "choices": [
+      "Less than \u20b92,000",
+      "\u20b92,000\u2013\u20b95,000",
+      "\u20b95,000\u2013\u20b910,000",
+      "\u20b910,000\u2013\u20b925,000",
+      "\u20b925,000\u2013\u20b950,000",
+      "More than \u20b950,000"
+    ]
+  },
+  {
+    "id": 1400436152,
+    "text": "  How often do you buy clothes for yourself?  ",
+    "desc": null,
+    "type": 2,
+    "entry_id": 641614989,
+    "choices": [
+      "More than once a month",
+      "Once a month",
+      "Every 2\u20133 months",
+      "Every 4\u20136 months",
+      "Less often"
+    ]
+  },
+  {
+    "id": 158241637,
+    "text": "  Where do you usually shop for clothes?  ",
+    "desc": null,
+    "type": 4,
+    "entry_id": 2130890888,
+    "choices": [
+      "Zara",
+      "H&M",
+      "Mango",
+      "Uniqlo",
+      "Farfetch",
+      "Myntra",
+      "Ajio",
+      "Luxury / designer stores",
+      "Instagram / independent brands",
+      "Thrift / preowned platforms",
+      "Other"
+    ]
+  },
+  {
+    "id": 1837186309,
+    "text": "  Have you purchased a premium or luxury fashion item in the last 12 months?  ",
+    "desc": null,
+    "type": 2,
+    "entry_id": 1852072366,
+    "choices": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 2092154241,
+    "text": "  What do you usually do with clothes you no longer wear?  ",
+    "desc": null,
+    "type": 4,
+    "entry_id": 1330194199,
+    "choices": [
+      "Keep them in my wardrobe",
+      "Give them to family / friends",
+      "Donate them",
+      "Sell them",
+      "Throw them away",
+      "Other"
+    ]
+  },
+  {
+    "id": 1721169654,
+    "text": "  Have you ever sold your preowned clothes?  ",
+    "desc": null,
+    "type": 2,
+    "entry_id": 1656920273,
+    "choices": [
+      "Yes, regularly",
+      "Yes, once or twice",
+      "I tried but couldn't sell them",
+      "No, but I'd like to",
+      "No, and I'm not interested"
+    ]
+  },
+  {
+    "id": 535796610,
+    "text": "  What would be the biggest reason for you to sell clothes you no longer wear?  ",
+    "desc": null,
+    "type": 4,
+    "entry_id": 1726210043,
+    "choices": [
+      "Make some money back",
+      "Free up wardrobe space",
+      "Sell clothes I've barely worn",
+      "Recover value from expensive purchases",
+      "Reduce waste",
+      "Moving / relocating",
+      "Other"
+    ]
+  },
+  {
+    "id": 848124202,
+    "text": "  What would stop you from selling your clothes online?  ",
+    "desc": null,
+    "type": 4,
+    "entry_id": 819080465,
+    "choices": [
+      "Taking photos and creating listings",
+      "Deciding the right price",
+      "Finding serious buyers",
+      "Negotiating with buyers",
+      "Packaging / shipping",
+      "Arranging pickup",
+      "Concern about scams / fraud",
+      "Payment concerns",
+      "Privacy / safety",
+      "Too much effort for too little money",
+      "Other"
+    ]
+  },
+  {
+    "id": 887594446,
+    "text": "  When buying preowned clothing, what would make you comfortable purchasing it?  ",
+    "desc": null,
+    "type": 4,
+    "entry_id": 544833170,
+    "choices": [
+      "Verified / authenticated products",
+      "Detailed photos",
+      "Accurate condition grading",
+      "Proof of purchase",
+      "Seller ratings / reviews",
+      "Easy returns",
+      "Secure payment",
+      "Platform-managed delivery",
+      "Seller verification",
+      "Other"
+    ]
+  },
+  {
+    "id": 1920295109,
+    "text": "  What matters most when buying preowned clothing?  ",
+    "desc": null,
+    "type": 4,
+    "entry_id": 1915593258,
+    "choices": [
+      "Price",
+      "Brand",
+      "Condition",
+      "Authenticity",
+      "Style / uniqueness",
+      "Sustainability",
+      "Rarity / exclusivity",
+      "Size / fit",
+      "Convenience"
+    ]
+  },
+  {
+    "id": 1541604652,
+    "text": "  Imagine a platform where women in Bangalore can easily sell and buy preowned fashion. Which model would you prefer?  ",
+    "desc": null,
+    "type": 2,
+    "entry_id": 21080423,
+    "choices": [
+      "I list it myself and handle the sale",
+      "The platform helps me list it and handles buyers",
+      "The platform picks it up, lists it, and handles the entire sale",
+      "I don't want to sell, but I would buy",
+      "I wouldn't use such a platform"
+    ]
+  },
+  {
+    "id": 852352786,
+    "text": "  What would make you trust a preowned fashion marketplace enough to use it?  ",
+    "desc": null,
+    "type": 1,
+    "entry_id": 1398588771,
+    "choices": []
+  }
+]
