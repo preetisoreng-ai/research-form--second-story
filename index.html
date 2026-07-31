@@ -77,7 +77,7 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 2rem 1rem;
     position: relative;
     overflow-x: hidden;
@@ -912,6 +912,10 @@ body {
     animation: fadeInSuccess 0.5s ease forwards;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .confirmation-card.hidden {
     display: none;
 }
@@ -1262,7 +1266,7 @@ body {
     <div class="app-container">
         
         <!-- Header / Brand Banner -->
-        <header class="brand-header">
+        <header class="brand-header" id="brandHeader">
             <div class="brand-badge">
                 <span class="badge-dot"></span> BANGALORE FASHION INSIGHTS
             </div>
@@ -2530,7 +2534,7 @@ body {
         </div>
 
         <!-- Footer Footer -->
-        <footer class="app-footer">
+        <footer class="app-footer" id="appFooter">
             <p>&copy; 2026 Second Story Fashion Research • Bangalore, India</p>
         </footer>
 
@@ -2565,6 +2569,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmationCard = document.getElementById('confirmationCard');
     const summaryContent = document.getElementById('summaryContent');
     const newResponseBtn = document.getElementById('newResponseBtn');
+    const brandHeader = document.getElementById('brandHeader') || document.querySelector('.brand-header');
+    const appFooter = document.getElementById('appFooter') || document.querySelector('.app-footer');
 
     // Questions list mapping for display summary
     const questionLabels = {
@@ -3097,16 +3103,18 @@ document.addEventListener('DOMContentLoaded', () => {
         submitSpinner.classList.add('hidden');
         submitBtn.disabled = false;
 
-        // Hide form & progress wrapper
-        surveyForm.classList.add('hidden');
-        progressWrapper.classList.add('hidden');
+        // Hide header, form, progress wrapper & footer so ONLY success card is visible
+        if (brandHeader) brandHeader.classList.add('hidden');
+        if (progressWrapper) progressWrapper.classList.add('hidden');
+        if (surveyForm) surveyForm.classList.add('hidden');
+        if (appFooter) appFooter.classList.add('hidden');
 
         // Populate Summary
         renderSummary();
 
-        // Show Confirmation
+        // Show Confirmation at top of page
         confirmationCard.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
     // Render Response Summary
@@ -3166,8 +3174,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.other-input-container').forEach(cont => cont.classList.add('hidden'));
 
         confirmationCard.classList.add('hidden');
-        surveyForm.classList.remove('hidden');
-        progressWrapper.classList.remove('hidden');
+        if (brandHeader) brandHeader.classList.remove('hidden');
+        if (progressWrapper) progressWrapper.classList.remove('hidden');
+        if (surveyForm) surveyForm.classList.remove('hidden');
+        if (appFooter) appFooter.classList.remove('hidden');
 
         currentStep = 1;
         updateStepUI();
