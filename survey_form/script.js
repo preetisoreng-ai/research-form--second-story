@@ -541,9 +541,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form Submission Handling
     surveyForm.addEventListener('submit', (e) => {
         // Show spinner state
+       const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwsGO9oQSVGAyua-
+  4rPXoXrCIe0NaLWytLxF46rq0G57xGSVt5r8z2Zsn2N9GA1ndVO/exec';
         submitSpinner.classList.remove('hidden');
         submitBtn.disabled = true;
-        
+
+        const payload = {
+                gender: surveyForm.querySelector('input[name="entry.236224908"]:checked')?.value || '',
+                age: surveyForm.querySelector('input[name="entry.921532506"]:checked')?.value || '',
+                occupation: surveyForm.querySelector('input[name="entry.1801662950"]:checked')?.value || '',
+                area: surveyForm.querySelector('input[name="entry.1701656037"]:checked')?.value || '',
+                monthlySpend: surveyForm.querySelector('input[name="entry.317039661"]:checked')?.value || '',
+                shoppingFreq: surveyForm.querySelector('input[name="entry.641614989"]:checked')?.value || '',
+                luxuryPurchase: surveyForm.querySelector('input[name="entry.1852072366"]:checked')?.value || '',
+                everSold: surveyForm.querySelector('input[name="entry.1656920273"]:checked')?.value || '',
+                preferredModel: surveyForm.querySelector('input[name="entry.21080423"]:checked')?.value || '',
+                trustFeedback: surveyForm.querySelector('textarea[name="entry.1398588771"]')?.value || ''
+            };
+
+            if (GOOGLE_APPS_SCRIPT_URL) {
+                fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(payload),
+                    mode: 'no-cors'
+                }).catch(err => console.error("Post error:", err));
+            }
         // Flag for iframe onload handler
         window.submitted = true;
 
